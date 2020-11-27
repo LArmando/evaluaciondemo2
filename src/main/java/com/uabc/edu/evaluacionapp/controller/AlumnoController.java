@@ -38,7 +38,7 @@ public class AlumnoController {
   public String borrarProducto(@PathVariable("id") Integer id, Model model){
     model.addAttribute("alumnos",service.obtenerAlumnos());
 
-    return service.borrarAlumno(id)==true?"redirect:alumnos/mostrar":"redirect:alumnos/error";
+    return service.eliminarAlumno(id)==true?"redirect:alumnos/mostrar":"redirect:alumnos/error";
   }
 
 }
