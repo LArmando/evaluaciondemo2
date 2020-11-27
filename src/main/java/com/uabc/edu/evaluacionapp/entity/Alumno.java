@@ -10,16 +10,17 @@ import javax.persistence.*;
 public class Alumno {
     @Id
     private Integer matricula;
-    private String nombre, apPaterno, apMaterno;
+    private String nombre, apPaterno, apMaterno, programa_educativo;
 
     public Alumno(){
 
     }
 
-    public Alumno(String nombre, String apPaterno, String apMaterno) {
+    public Alumno(String nombre, String apPaterno, String apMaterno, String programa_educativo) {
         this.nombre = nombre;
         this.apPaterno = apPaterno;
         this.apMaterno = apMaterno;
+        this.programa_educativo = programa_educativo;
     }
 
 }

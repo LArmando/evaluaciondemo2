@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 </head>
 <body>
-
+<a class="btn btn-warning" th:href="@{/index/index}">Regresar al menu principal</a>
 <h1>Registrar profesores</h1>
 
 <form th:object="${profesor}" th:action="@{/profesores/registrar}" method="post">
@@ -22,6 +22,11 @@
     <div class="form-group">
         <label for="existencia">Apellido materno</label>
         <input th:field="*{apMaterno}" id="existencia" placeholder="Apellido materno" type="text"
+               class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="existencia">Materia que imparte</label>
+        <input th:field="*{materia}" id="materia" placeholder="Materia" type="text"
                class="form-control">
     </div>
     <button class="btn btn-success" type="submit">Guardar</button>

@@ -13,13 +13,14 @@ public class Profesor {
     @Column(name="id_profesor")
 
     private Integer id;
-    private String nombre, apPaterno, apMaterno;
+    private String nombre, apPaterno, apMaterno, materia;
 
     public Profesor(){
     }
-    public Profesor(String nombre, String apPaterno, String apMaterno) {
+    public Profesor(String nombre, String apPaterno, String apMaterno, String materia) {
         this.nombre = nombre;
         this.apPaterno = apPaterno;
         this.apMaterno = apMaterno;
+        this.materia = materia;
     }
 }

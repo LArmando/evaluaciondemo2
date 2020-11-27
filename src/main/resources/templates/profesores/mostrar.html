@@ -6,6 +6,9 @@
     <title>Profesores</title>
 </head>
 <body>
+<a class="btn btn-warning" th:href="@{/index/index}">Regresar al menu principal</a>
+<h1>Consulta profesores</h1>
+
 <table border="1">
     <thead>
     <tr>
@@ -13,6 +16,7 @@
         <th th:text="#{msg.nombre}"/>
         <th th:text="#{msg.apPaterno}"/>
         <th th:text="#{msg.apMaterno}"/>
+        <th th:text="#{msg.materia}"/>
     </tr>
     </thead>
     <tbody>
@@ -21,6 +25,7 @@
         <td th:text="${profesor.getNombre()}"/>
         <td th:text="${profesor.getApPaterno()}"/>
         <td th:text="${profesor.getApMaterno()}"/>
+        <td th:text="${profesor.getMateria()}"/>
         <td><a th:href="@{/profesores/editar/{id}(id=${profesor.getId()})}">Editar</a></td>
         <td><a th:href="@{/profesores/eliminar/{id}(id=${profesor.getId()})}">Eliminar</a></td>
     </tr>

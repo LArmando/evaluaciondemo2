@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 </head>
 <body>
-
+<a class="btn btn-warning" th:href="@{/index/index}">Regresar al menu principal</a>
 <h1>Editar intendente</h1>
 
 <form th:object="${intendente}" th:action="@{/intendentes/modificar/{id}(id=${intendente.getId()})}" method="post">
@@ -24,8 +24,8 @@
         <input th:field="*{apMaterno}" id="existencia" placeholder="Apellido materno" type="text"
                class="form-control">
     </div>
-    <button class="btn btn-success" type="submit">Modificar</button>
-    &nbsp;<a class="btn btn-warning" th:href="@{/intendentes/mostrar}">Ver todos</a>
+    <button class="btn btn-success" type="submit">Guardar cambios</button>
+    &nbsp;<a class="btn btn-warning" th:href="@{/intendentes/mostrar}">Regresar</a>
 </form>
 
 </body>
