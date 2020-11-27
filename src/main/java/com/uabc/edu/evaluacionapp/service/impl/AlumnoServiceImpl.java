@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AlumnoServiceImpl implements AlumnoService {
@@ -62,7 +63,12 @@ public class AlumnoServiceImpl implements AlumnoService {
     }
 
     @Override
-    public Intendente obtenerAlumno(Integer id) {
-        return null;
+    public Alumno obtenerAlumno(Integer id) {
+        Optional<Alumno> alumno = repo.findById(id);
+        if (alumno.isPresent()){
+            return alumno.get();
+        } else {
+            throw new RuntimeException("hola");
+        }
     }
 }

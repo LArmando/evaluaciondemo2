@@ -10,5 +10,5 @@ public interface AlumnoService {
     public boolean modificarAlumno(Alumno alum);
     public boolean eliminarAlumno(Integer id);
     public List<Alumno> obtenerAlumnos();
-    public Intendente obtenerAlumno(Integer id);
+    public Alumno obtenerAlumno(Integer id);
 }
