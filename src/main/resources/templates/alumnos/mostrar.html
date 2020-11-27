@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profesores</title>
+</head>
+<body>
+<table border="1">
+    <thead>
+    <tr>
+        <th th:text="#{msg.matricula}"/>
+        <th th:text="#{msg.nombre}"/>
+        <th th:text="#{msg.apPaterno}"/>
+        <th th:text="#{msg.apMaterno}"/>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="alumno:${alumnos}">
+        <td th:text="${alumno.getMatricula()}"/>
+        <td th:text="${alumno.getNombre()}"/>
+        <td th:text="${alumno.getApPaterno()}"/>
+        <td th:text="${alumno.getApMaterno()}"/>
+        <td><a th:href="@{/alumnos/editar/{id}(id=${alumno.getMatricula()})}">Editar</a></td>
+        <td><a th:href="@{/alumnos/eliminar/{id}(id=${alumno.getMatricula()})}">Eliminar</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<a class="btn btn-warning" th:href="@{/alumnos/registrar}">Registrar alumno</a>
+</body>
+
+</html>

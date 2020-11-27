@@ -2,16 +2,15 @@ package com.uabc.edu.evaluacionapp.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
+@Table(name="intendente")
 public class Intendente {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id_intendente")
     private Integer id;
     private String nombre, apPaterno, apMaterno;
     public Intendente(){

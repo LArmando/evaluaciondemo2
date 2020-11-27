@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registrar alumnos</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<h1>Registrar alumnos</h1>
+
+<form th:object="${alumno}" th:action="@{/alumnos/registrar}" method="post">
+    <div class="form-group">
+        <label for="nombre">Matricula</label>
+        <input th:field="*{matricula}" id="matricula" placeholder="Matricula" type="text"
+               class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="nombre">Nombre del alumno</label>
+        <input th:field="*{nombre}" id="nombre" placeholder="Nombre del profesor" type="text"
+               class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="codigo">Apellido paterno</label>
+        <input th:field="*{apPaterno}" id="codigo" placeholder="Apellido paterno" type="text"
+               class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="existencia">Apellido materno</label>
+        <input th:field="*{apMaterno}" id="existencia" placeholder="Apellido materno" type="text"
+               class="form-control">
+    </div>
+    <button class="btn btn-success" type="submit">Guardar</button>
+    &nbsp;<a class="btn btn-warning" th:href="@{/alumnos/mostrar}">Ver todos</a>
+</form>
+
+</body>
+</html>

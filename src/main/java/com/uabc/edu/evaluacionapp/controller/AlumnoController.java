@@ -2,12 +2,16 @@ package com.uabc.edu.evaluacionapp.controller;
 
 
 import com.uabc.edu.evaluacionapp.entity.Alumno;
+import com.uabc.edu.evaluacionapp.entity.Profesor;
 import com.uabc.edu.evaluacionapp.service.impl.AlumnoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.Optional;
 
 @Controller
 @RequestMapping(path = "/alumnos")
@@ -25,7 +29,7 @@ public class AlumnoController {
   public String registrarAlumno(@ModelAttribute Alumno alumno, RedirectAttributes redirectAttributes){
     service.registrarAlumno(alumno);
     redirectAttributes.addFlashAttribute("mensaje", "agregado correctamente");
-    return"redirect: alumnos/mostrar";
+    return "redirect:/alumnos/mostrar";
   }
 
   @GetMapping (value = "/mostrar")
@@ -38,7 +42,27 @@ public class AlumnoController {
   public String borrarProducto(@PathVariable("id") Integer id, Model model){
     model.addAttribute("alumnos",service.obtenerAlumnos());
 
-    return service.eliminarAlumno(id)==true?"redirect:alumnos/mostrar":"redirect:alumnos/error";
+    boolean test = service.eliminarAlumno(id);
+
+    return "redirect:/alumnos/mostrar";
+  }
+
+  @PostMapping(value = "/modificar/{matricula}")
+  public String modificarAlumno(@PathVariable("matricula") Integer id, @ModelAttribute Alumno alumno, RedirectAttributes redirectAttrs, BindingResult result, Model model) {
+    model.addAttribute("alumnos", service.obtenerAlumnos());
+    service.modificarAlumno(alumno);
+    redirectAttrs.addFlashAttribute("mensaje", "Editado correctamente");
+
+    return "redirect:/alumnos/mostrar";
+  }
+
+  @GetMapping(value = "/editar/{id}")
+  public String editarAlumno(@PathVariable("id") Optional<Integer> id, Model model) {
+    if (id.isPresent()) {
+      Alumno alumno = service.obtenerAlumno(id.get());
+      model.addAttribute("alumno", alumno);
+    }
+    return "/alumnos/modificar";
   }
 
 }

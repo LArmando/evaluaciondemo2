@@ -1,11 +1,8 @@
 package com.uabc.edu.evaluacionapp.service.impl;
 
-import com.uabc.edu.evaluacionapp.entity.Alumno;
 import com.uabc.edu.evaluacionapp.entity.Intendente;
-import com.uabc.edu.evaluacionapp.entity.Profesor;
-import com.uabc.edu.evaluacionapp.repository.AlumnoRepository;
-import com.uabc.edu.evaluacionapp.repository.ProfesorRepository;
-import com.uabc.edu.evaluacionapp.service.AlumnoService;
+import com.uabc.edu.evaluacionapp.repository.IntendenteRepository;
+import com.uabc.edu.evaluacionapp.service.IntendenteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +12,14 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AlumnoServiceImpl implements AlumnoService {
+public class IntendenteServiceImpl implements IntendenteService {
     @Autowired
-    AlumnoRepository repo;
+    IntendenteRepository repo;
 
     @Override
-    public boolean registrarAlumno(Alumno alum) {
+    public boolean registrarIntendente(Intendente inte) {
         try {
-            repo.save(alum);
+            repo.save(inte);
         } catch (Exception e) {
             return false;
         }
@@ -30,18 +27,17 @@ public class AlumnoServiceImpl implements AlumnoService {
     }
 
     @Override
-    public boolean modificarAlumno(Alumno alum) {
+    public boolean modificarIntendente(Intendente inte) {
         try {
-            repo.save(alum);
+            repo.save(inte);
         } catch (Exception e) {
-            System.out.println("Error");
             return false;
         }
         return true;
     }
 
     @Override
-    public boolean eliminarAlumno(Integer id) {
+    public boolean eliminarIntendente(Integer id) {
         try {
             repo.deleteById(id);
         } catch (Exception e) {
@@ -51,11 +47,11 @@ public class AlumnoServiceImpl implements AlumnoService {
     }
 
     @Override
-    public List<Alumno> obtenerAlumnos() {
+    public List<Intendente> obtenerIntendentes() {
         //Convertir Iterador a Lista
-        Iterable<Alumno> ite = repo.findAll();
-        Iterator<Alumno> it = ite.iterator();
-        List<Alumno> actualList = new ArrayList<Alumno>();
+        Iterable<Intendente> ite = repo.findAll();
+        Iterator<Intendente> it = ite.iterator();
+        List<Intendente> actualList = new ArrayList<Intendente>();
         while (it.hasNext()) {
             actualList.add(it.next());
         }
@@ -64,10 +60,10 @@ public class AlumnoServiceImpl implements AlumnoService {
     }
 
     @Override
-    public Alumno obtenerAlumno(Integer id) {
-        Optional<Alumno> alumno = repo.findById(id);
-        if (alumno.isPresent()){
-            return alumno.get();
+    public Intendente obtenerIntendente(Integer id) {
+        Optional<Intendente> intendente = repo.findById(id);
+        if (intendente.isPresent()){
+            return intendente.get();
         } else {
             throw new RuntimeException("hola");
         }
