@@ -11,4 +11,14 @@ public class MenuController {
     public String menu(){
         return "index/index";
     }
+
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
+
+    @GetMapping("/forbidden")
+    public String forbidden(){
+        return "forbidden";
+    }
 }
