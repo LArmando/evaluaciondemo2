@@ -27,20 +27,25 @@ public class CreateAdmin implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Rol rolAdmin = new Rol(RolNombre.ROLE_ADMIN);
-        Rol rolUser = new Rol(RolNombre.ROLE_USER);
-        rolService.save(rolAdmin);
-        rolService.save(rolUser);
-        Usuario usuario = new Usuario();
-        String passwordEncoded = passwordEncoder.encode("admin");
-        usuario.setNombreUsuario("admin");
-        usuario.setPassword(passwordEncoded);
-        rolAdmin = rolService.getByRolNombre(RolNombre.ROLE_ADMIN).get();
-        rolUser = rolService.getByRolNombre(RolNombre.ROLE_USER).get();
-        Set<Rol> roles = new HashSet<>();
-        roles.add(rolAdmin);
-        roles.add(rolUser);
-        usuario.setRoles(roles);
-        usuarioService.save(usuario);
+        if(!usuarioService.existsByNombreusuario("admin")) {
+            Rol rolAdmin = new Rol(RolNombre.ROLE_ADMIN);
+            Rol rolUser = new Rol(RolNombre.ROLE_USER);
+            rolService.save(rolAdmin);
+            rolService.save(rolUser);
+
+            Usuario usuario = new Usuario();
+            String passwordEncoded = passwordEncoder.encode("admin");
+            usuario.setNombreUsuario("admin");
+            usuario.setPassword(passwordEncoded);
+
+            rolAdmin = rolService.getByRolNombre(RolNombre.ROLE_ADMIN).get();
+            rolUser = rolService.getByRolNombre(RolNombre.ROLE_USER).get();
+
+            Set<Rol> roles = new HashSet<>();
+            roles.add(rolAdmin);
+            roles.add(rolUser);
+            usuario.setRoles(roles);
+            usuarioService.save(usuario);
+        }
     }
 }

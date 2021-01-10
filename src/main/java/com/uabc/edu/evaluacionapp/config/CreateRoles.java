@@ -1,5 +1,7 @@
 package com.uabc.edu.evaluacionapp.config;
 
+import com.uabc.edu.evaluacionapp.entity.Rol;
+import com.uabc.edu.evaluacionapp.enums.RolNombre;
 import com.uabc.edu.evaluacionapp.service.RolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -13,9 +15,9 @@ public class CreateRoles implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        Rol rolAdmin = new Rol(RolNombre.ROLE_ADMIN);
-//        Rol rolUser = new Rol(RolNombre.ROLE_USER);
-//        rolService.save(rolAdmin);
-//        rolService.save(rolUser);
+        /*Rol rolAdmin = new Rol(RolNombre.ROLE_ADMIN);
+        Rol rolUser = new Rol(RolNombre.ROLE_USER);
+        rolService.save(rolAdmin);
+        rolService.save(rolUser);*/
     }
 }

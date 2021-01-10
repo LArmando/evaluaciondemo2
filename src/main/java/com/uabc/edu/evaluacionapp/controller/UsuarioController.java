@@ -53,14 +53,18 @@ public class UsuarioController {
             mv.addObject("error", "ese nombre de usuario ya existe");
             return mv;
         }
+
         Usuario usuario = new Usuario();
         usuario.setNombreUsuario(nombreUsuario);
         usuario.setPassword(passwordEncoder.encode(password));
+
         Rol rolUser = rolService.getByRolNombre(RolNombre.ROLE_USER).get();
+
         Set<Rol> roles = new HashSet<>();
         roles.add(rolUser);
         usuario.setRoles(roles);
         usuarioService.save(usuario);
+
         mv.setViewName("/login");
         mv.addObject("registroOK", "Cuenta creada, " + usuario.getNombreUsuario() + ", ya puedes iniciar sesión");
         return mv;
