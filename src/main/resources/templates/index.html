@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Evaluacion</title>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments :: headerfiles">
 </head>
 <body>
+<header th:insert="fragments :: nav"></header>
 <div style="text-align: center;">
 
     <h1>Evaluacion</h1>
@@ -14,8 +12,9 @@
     <a class="btn btn-warning" th:href="@{/alumnos/registrar}">Alumnos</a><br>
     <a class="btn btn-warning" th:href="@{/intendentes/registrar}">Intendentes</a>
 
-
-
 </div>
+
+<footer th:insert="fragments :: footer"></footer>
+<div th:insert="fragments :: scripts"></div>
 </body>
 </html>
