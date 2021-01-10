@@ -5,6 +5,7 @@ import com.uabc.edu.evaluacionapp.entity.Alumno;
 import com.uabc.edu.evaluacionapp.entity.Profesor;
 import com.uabc.edu.evaluacionapp.service.impl.AlumnoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,12 +20,14 @@ public class AlumnoController {
   @Autowired
   AlumnoServiceImpl service;
 
+  @PreAuthorize("hasRole('ADMIN')")
   @GetMapping (value = "/registrar")
   public String registrarAlumno(Model model){
     model.addAttribute("alumno", new Alumno());
     return "alumnos/registrar";
   }
 
+  @PreAuthorize("hasRole('ADMIN')")
   @PostMapping(value = "/registrar")
   public String registrarAlumno(@ModelAttribute Alumno alumno, RedirectAttributes redirectAttributes){
     service.registrarAlumno(alumno);
@@ -38,6 +41,7 @@ public class AlumnoController {
     return "alumnos/mostrar";
   }
 
+  @PreAuthorize("hasRole('ADMIN')")
   @GetMapping (value = "/eliminar/{id}")
   public String borrarProducto(@PathVariable("id") Integer id, Model model){
     model.addAttribute("alumnos",service.obtenerAlumnos());
@@ -47,6 +51,7 @@ public class AlumnoController {
     return "redirect:/alumnos/mostrar";
   }
 
+  @PreAuthorize("hasRole('ADMIN')")
   @PostMapping(value = "/modificar/{matricula}")
   public String modificarAlumno(@PathVariable("matricula") Integer id, @ModelAttribute Alumno alumno, RedirectAttributes redirectAttrs, BindingResult result, Model model) {
     model.addAttribute("alumnos", service.obtenerAlumnos());
@@ -56,6 +61,7 @@ public class AlumnoController {
     return "redirect:/alumnos/mostrar";
   }
 
+  @PreAuthorize("hasRole('ADMIN')")
   @GetMapping(value = "/editar/{id}")
   public String editarAlumno(@PathVariable("id") Optional<Integer> id, Model model) {
     if (id.isPresent()) {

@@ -3,6 +3,7 @@ package com.uabc.edu.evaluacionapp.controller;
 import com.uabc.edu.evaluacionapp.entity.Intendente;
 import com.uabc.edu.evaluacionapp.service.impl.IntendenteServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,12 +18,14 @@ public class IntendenteController {
     @Autowired
     IntendenteServiceImpl service;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping(value = "/registrar")
     public String registrarIntendente(Model model){
         model.addAttribute("intendente", new Intendente());
         return "intendentes/registrar";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(value = "/registrar")
     public String registrarIntendente(@ModelAttribute Intendente intendente, RedirectAttributes redirectAttrs) {
 
@@ -38,6 +41,7 @@ public class IntendenteController {
         return "intendentes/mostrar";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping(value = "/eliminar/{id}")
     public String eliminarIntendente(@PathVariable("id") Integer id, Model model) {
         model.addAttribute("intendentes", service.obtenerIntendentes());
@@ -47,6 +51,7 @@ public class IntendenteController {
         return "redirect:/intendentes/mostrar";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(value = "/modificar/{id}")
     public String modificarIntendente(@PathVariable("id") Integer id, @ModelAttribute Intendente intendente, RedirectAttributes redirectAttrs, BindingResult result, Model model) {
         model.addAttribute("intendentes", service.obtenerIntendentes());
@@ -56,6 +61,7 @@ public class IntendenteController {
         return "redirect:/intendentes/mostrar";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping(value = "/editar/{id}")
     public String editarIntendente(@PathVariable("id") Optional<Integer> id, Model model) {
         if (id.isPresent()) {
