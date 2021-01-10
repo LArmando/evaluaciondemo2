@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(path = "/index")
+@RequestMapping(path = "/")
 public class MenuController {
-    @GetMapping(value = "/index")
+    @GetMapping(value = "/")
     public String menu(){
-        return "index/index";
+        return "index";
     }
 
     @GetMapping("/login")
