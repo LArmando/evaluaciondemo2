@@ -3,6 +3,7 @@ package com.uabc.edu.evaluacionapp.repository;
 import com.uabc.edu.evaluacionapp.entity.Rol;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import com.uabc.edu.evaluacionapp.enums.RolNombre;
 
 import java.util.Optional;
 

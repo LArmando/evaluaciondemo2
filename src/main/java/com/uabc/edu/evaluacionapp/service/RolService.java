@@ -1,8 +1,11 @@
 package com.uabc.edu.evaluacionapp.service;
 
+import com.uabc.edu.evaluacionapp.entity.Rol;
+import com.uabc.edu.evaluacionapp.enums.RolNombre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.uabc.edu.evaluacionapp.repository.RolRepository;
 
 import java.util.Optional;
 
